@@ -211,6 +211,7 @@ local config = {
       },
       { "tpope/vim-abolish" },
       { "tpope/vim-surround" },
+      { "machakann/vim-highlightedyank" },
       { "michaeljsmith/vim-indent-object" },
     },
     -- All other entries override the require("<key>").setup({...}) call for default plugins
