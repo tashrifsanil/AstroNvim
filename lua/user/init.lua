@@ -311,4 +311,6 @@ local config = {
   end,
 }
 
+--[[ Set gui font only if neovide is being used as this causes erros in vimr ]]
+if vim.g.neovide then config.options.opt.guifont = "JetBrainsMono Nerd Font Mono" end
 return config
