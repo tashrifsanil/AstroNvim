@@ -209,6 +209,7 @@ local config = {
         as = "tokyonight",
         config = function() vim.cmd [[colorscheme tokyonight]] end,
       },
+      { "tpope/vim-abolish" },
     },
     -- All other entries override the require("<key>").setup({...}) call for default plugins
     ["null-ls"] = function(config) -- overrides `require("null-ls").setup(config)`
