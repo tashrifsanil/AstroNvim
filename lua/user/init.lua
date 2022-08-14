@@ -45,7 +45,7 @@ local config = {
   options = {
     opt = {
       relativenumber = true, -- sets vim.opt.relativenumber
-      clipboard = "unnamedplus"
+      clipboard = "",
     },
     g = {
       mapleader = " ", -- sets vim.g.mapleader
@@ -355,9 +355,6 @@ local config = {
     -- Remap @ so that macros can be played over selection more easily, without
     -- affecting normal @ functionality
     vim.cmd "vnoremap @ :normal @"
-    -- Change without yanking
-    vim.cmd 'nnoremap c "_c'
-    vim.cmd 'vnoremap c "_c'
   end,
 }
 
