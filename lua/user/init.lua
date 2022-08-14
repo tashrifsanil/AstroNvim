@@ -45,6 +45,7 @@ local config = {
   options = {
     opt = {
       relativenumber = true, -- sets vim.opt.relativenumber
+      clipboard = "unnamedplus"
     },
     g = {
       mapleader = " ", -- sets vim.g.mapleader
@@ -327,6 +328,13 @@ local config = {
     if vim.g.neovide then
       vim.opt.guifont = "JetBrainsMono Nerd Font Mono"
       vim.g.neovide_refresh_rate = 120
+      vim.g.neovide_input_use_logo = 1
+      -- Allow copy pasting from system (mac specific)
+      -- https://github.com/neovide/neovide/issues/1263
+      vim.cmd 'map <D-v> "+p<CR>'
+      vim.cmd 'map! <D-v> <C-R>+'
+      vim.cmd 'tmap <D-v> <C-R>+'
+      vim.cmd 'vmap <D-c> "+y<CR>'
     end
 
     -- Remap @ so that macros can be played over selection more easily, without
