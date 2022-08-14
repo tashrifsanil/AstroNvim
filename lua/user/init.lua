@@ -174,6 +174,7 @@ local config = {
       ["<leader>bc"] = { "<cmd>BufferLinePickClose<cr>", desc = "Pick to close" },
       ["<leader>bj"] = { "<cmd>BufferLinePick<cr>", desc = "Pick to jump" },
       ["<leader>bt"] = { "<cmd>BufferLineSortByTabs<cr>", desc = "Sort by tabs" },
+      ["cr?"] = { ":help abolish-coercion<cr>", desc = "Help" },
       -- quick save
       -- ["<C-s>"] = { ":w!<cr>", desc = "Save File" },  -- change description but the same command
     },
@@ -290,6 +291,9 @@ local config = {
           -- group name in which-key top level menu
           ["b"] = { name = "Buffer" },
         },
+        ["c"] = {
+          ["r"] = { name = "Abolish Coercion" },
+        },
       },
       v = {
         ["/"] = { name = "Search" },
@@ -303,6 +307,7 @@ local config = {
   polish = function()
     -- Set key binding
     -- Set autocommands
+
     vim.api.nvim_create_augroup("packer_conf", { clear = true })
     vim.api.nvim_create_autocmd("BufWritePost", {
       desc = "Sync packer after modifying plugins.lua",
