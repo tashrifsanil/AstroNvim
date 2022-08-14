@@ -124,6 +124,7 @@ local config = {
       n = {
         -- ["<leader>lf"] = false -- disable formatting keymap
       },
+      v = {},
     },
     -- add to the global LSP on_attach function
     -- on_attach = function(client, bufnr)
@@ -173,6 +174,11 @@ local config = {
       ["<leader>bt"] = { "<cmd>BufferLineSortByTabs<cr>", desc = "Sort by tabs" },
       -- quick save
       -- ["<C-s>"] = { ":w!<cr>", desc = "Save File" },  -- change description but the same command
+    },
+    v = {
+      -- Search for visually selected text
+      -- https://vim.fandom.com/wiki/Search_for_visually_selected_text
+      ["//"] = { "y/<C-R>=escape(@\",'/')<cr><cr>", desc = "Search visually selected" },
     },
     t = {
       -- setting a mapping to false will disable it
@@ -283,6 +289,9 @@ local config = {
           ["b"] = { name = "Buffer" },
         },
       },
+      v = {
+        ["/"] = { name = "Search" },
+      },
     },
   },
 
@@ -312,10 +321,13 @@ local config = {
     --     ["~/%.config/foo/.*"] = "fooscript",
     --   },
     -- }
-    --
+
     -- Set gui font only if neovide is being used as this causes erros in vimr
     if vim.g.neovide then vim.opt.guifont = "JetBrainsMono Nerd Font Mono" end
 
+    -- Remap @ so that macros can be played over selection more easily, without
+    -- affecting normal @ functionality
+    vim.cmd "vnoremap @ :normal @"
     -- Change without yanking
     vim.cmd 'nnoremap c "_c'
     vim.cmd 'vnoremap c "_c'
