@@ -311,6 +311,21 @@ local config = {
       command = "source <afile> | PackerSync",
     })
 
+    local wk = require "which-key"
+    local preset_mappings = {
+      ["crc"] = "camelCase",
+      ["crm"] = "MixedCase",
+      ["cr_"] = "snake_case",
+      ["crs"] = "snake_case",
+      ["cru"] = "SNAKE_UPPERCASE",
+      ["crU"] = "SNAKE_UPPERCASE",
+      ["cr-"] = "dash-case",
+      ["crk"] = "kebab-case",
+      ["cr."] = "dot.case",
+      ["cr<space>"] = "space",
+      ["crt"] = "Title",
+    }
+    wk.register(preset_mappings, { preset = true })
     -- Set up custom filetypes
     -- vim.filetype.add {
     --   extension = {
