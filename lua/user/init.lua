@@ -117,7 +117,7 @@ local config = {
   lsp = {
     -- enable servers that you already have installed without mason
     servers = {
-      -- "pyright"
+      "solargraph",
     },
     -- easily add or disable built in mappings added during LSP attaching
     mappings = {
