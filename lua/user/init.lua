@@ -118,6 +118,7 @@ local config = {
     -- enable servers that you already have installed without mason
     servers = {
       "solargraph",
+      "bashls",
     },
     -- easily add or disable built in mappings added during LSP attaching
     mappings = {
@@ -323,7 +324,10 @@ local config = {
     -- }
 
     -- Set gui font only if neovide is being used as this causes erros in vimr
-    if vim.g.neovide then vim.opt.guifont = "JetBrainsMono Nerd Font Mono" end
+    if vim.g.neovide then
+      vim.opt.guifont = "JetBrainsMono Nerd Font Mono"
+      vim.g.neovide_refresh_rate = 120
+    end
 
     -- Remap @ so that macros can be played over selection more easily, without
     -- affecting normal @ functionality
