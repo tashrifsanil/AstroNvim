@@ -222,6 +222,13 @@ local config = {
       { "tpope/vim-surround" },
       { "machakann/vim-highlightedyank" },
       { "michaeljsmith/vim-indent-object" },
+      -- Sticky scroll similar to VSCode's implementation
+      -- see: https://www.youtube.com/shorts/znue7UqdUf0
+      {
+        "nvim-treesitter/nvim-treesitter-context",
+        after = "nvim-treesitter",
+        config = function() require("treesitter-context").setup() end,
+      },
     },
     -- All other entries override the require("<key>").setup({...}) call for default plugins
     ["null-ls"] = function(config) -- overrides `require("null-ls").setup(config)`
