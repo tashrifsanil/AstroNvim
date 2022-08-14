@@ -312,9 +312,14 @@ local config = {
     --     ["~/%.config/foo/.*"] = "fooscript",
     --   },
     -- }
+    --
+    -- Set gui font only if neovide is being used as this causes erros in vimr
+    if vim.g.neovide then vim.opt.guifont = "JetBrainsMono Nerd Font Mono" end
+
+    -- Change without yanking
+    vim.cmd 'nnoremap c "_c'
+    vim.cmd 'vnoremap c "_c'
   end,
 }
 
---[[ Set gui font only if neovide is being used as this causes erros in vimr ]]
-if vim.g.neovide then config.options.opt.guifont = "JetBrainsMono Nerd Font Mono" end
 return config
