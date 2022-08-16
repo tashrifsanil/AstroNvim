@@ -228,6 +228,7 @@ local config = {
       { "jeetsukumaran/vim-indentwise" },
       { "mg979/vim-visual-multi" },
       { "michaeljsmith/vim-indent-object" },
+      { "ggandor/lightspeed.nvim" },
       -- Sticky scroll similar to VSCode's implementation
       -- see: https://www.youtube.com/shorts/znue7UqdUf0
       {
@@ -365,8 +366,8 @@ local config = {
       -- Allow copy pasting from system (mac specific)
       -- https://github.com/neovide/neovide/issues/1263
       vim.cmd 'map <D-v> "+p<CR>'
-      vim.cmd 'map! <D-v> <C-R>+'
-      vim.cmd 'tmap <D-v> <C-R>+'
+      vim.cmd "map! <D-v> <C-R>+"
+      vim.cmd "tmap <D-v> <C-R>+"
       vim.cmd 'vmap <D-c> "+y<CR>'
     end
 
