@@ -160,37 +160,6 @@ local config = {
     },
   },
 
-  -- Mapping data with "desc" stored directly by vim.keymap.set().
-  --
-  -- Please use this mappings table to set keyboard mapping since this is the
-  -- lower level configuration and more robust one. (which-key will
-  -- automatically pick-up stored data by this setting.)
-  mappings = {
-    -- first key is the mode
-    n = {
-      -- second key is the lefthand side of the map
-      -- mappings seen under group name "Buffer"
-      ["<leader>bb"] = { "<cmd>tabnew<cr>", desc = "New tab" },
-      ["<leader>bc"] = { "<cmd>BufferLinePickClose<cr>", desc = "Pick to close" },
-      ["<leader>bj"] = { "<cmd>BufferLinePick<cr>", desc = "Pick to jump" },
-      ["<leader>bt"] = { "<cmd>BufferLineSortByTabs<cr>", desc = "Sort by tabs" },
-      ["cr?"] = { ":help abolish-coercion<cr>", desc = "Help" },
-      ["<c-k>"] = { ":call vm#commands#add_cursor_up(0, v:count1)<cr>", desc = "Add cursor up" },
-      ["<c-j>"] = { ":call vm#commands#add_cursor_down(0, v:count1)<cr>", desc = "Add cursor down" },
-      -- quick save
-      -- ["<C-s>"] = { ":w!<cr>", desc = "Save File" },  -- change description but the same command
-    },
-    v = {
-      -- Search for visually selected text
-      -- https://vim.fandom.com/wiki/Search_for_visually_selected_text
-      ["//"] = { "y/<C-R>=escape(@\",'/')<cr><cr>", desc = "Search visually selected" },
-    },
-    t = {
-      -- setting a mapping to false will disable it
-      -- ["<esc>"] = false,
-    },
-  },
-
   -- Configure plugins
   plugins = {
     init = {
@@ -293,28 +262,6 @@ local config = {
     },
   },
 
-  -- Modify which-key registration (Use this with mappings table in the above.)
-  ["which-key"] = {
-    -- Add bindings which show up as group name
-    register_mappings = {
-      -- first key is the mode, n == normal mode
-      n = {
-        -- second key is the prefix, <leader> prefixes
-        ["<leader>"] = {
-          -- third key is the key to bring up next level and its displayed
-          -- group name in which-key top level menu
-          ["b"] = { name = "Buffer" },
-        },
-        ["c"] = {
-          ["r"] = { name = "Abolish Coercion" },
-        },
-      },
-      v = {
-        ["/"] = { name = "Search" },
-      },
-    },
-  },
-
   -- This function is run last and is a good place to configuring
   -- augroups/autocommands and custom filetypes also this just pure lua so
   -- anything that doesn't fit in the normal config locations above can go here
@@ -341,21 +288,6 @@ local config = {
       command = "source <afile> | PackerSync",
     })
 
-    local wk = require "which-key"
-    local preset_mappings = {
-      ["crc"] = "camelCase",
-      ["crm"] = "MixedCase",
-      ["cr_"] = "snake_case",
-      ["crs"] = "snake_case",
-      ["cru"] = "SNAKE_UPPERCASE",
-      ["crU"] = "SNAKE_UPPERCASE",
-      ["cr-"] = "dash-case",
-      ["crk"] = "kebab-case",
-      ["cr."] = "dot.case",
-      ["cr<space>"] = "space",
-      ["crt"] = "Title",
-    }
-    wk.register(preset_mappings, { preset = true })
     -- Set up custom filetypes
     -- vim.filetype.add {
     --   extension = {
