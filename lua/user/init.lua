@@ -322,6 +322,17 @@ local config = {
     -- Set key binding
     -- Set autocommands
 
+    -- Trigger `autoread` when file changes on disk
+    vim.api.nvim_create_autocmd(
+      { "FocusGained", "BufEnter", "CursorHold", "CursorHoldI" },
+      { pattern = "*", command = "if mode() != 'c' | checktime | endif" }
+    )
+    -- Notify user when file changes on disk
+    vim.api.nvim_create_autocmd(
+      { "FileChangedShellPost" },
+      { pattern = "*", command = 'echohl WarningMsg | echo "File changed on disk. Buffer reloaded." | echohl None' }
+    )
+
     vim.api.nvim_create_augroup("packer_conf", { clear = true })
     vim.api.nvim_create_autocmd("BufWritePost", {
       desc = "Sync packer after modifying plugins.lua",
