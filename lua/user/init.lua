@@ -175,6 +175,8 @@ local config = {
       ["<leader>bj"] = { "<cmd>BufferLinePick<cr>", desc = "Pick to jump" },
       ["<leader>bt"] = { "<cmd>BufferLineSortByTabs<cr>", desc = "Sort by tabs" },
       ["cr?"] = { ":help abolish-coercion<cr>", desc = "Help" },
+      ["<c-k>"] = { ":call vm#commands#add_cursor_up(0, v:count1)<cr>", desc = "Add cursor up" },
+      ["<c-j>"] = { ":call vm#commands#add_cursor_down(0, v:count1)<cr>", desc = "Add cursor down" },
       -- quick save
       -- ["<C-s>"] = { ":w!<cr>", desc = "Save File" },  -- change description but the same command
     },
@@ -224,6 +226,7 @@ local config = {
       { "tpope/vim-repeat" },
       { "machakann/vim-highlightedyank" },
       { "jeetsukumaran/vim-indentwise" },
+      { "mg979/vim-visual-multi" },
       { "michaeljsmith/vim-indent-object" },
       -- Sticky scroll similar to VSCode's implementation
       -- see: https://www.youtube.com/shorts/znue7UqdUf0
