@@ -1,4 +1,6 @@
-return {
+local telescope_ok, telescope = pcall(require, "telescope")
+
+local maps = {
   n = {
     -- Abolish Coercion Reference
     ["cr?"] = { ":help abolish-coercion<cr>", desc = "Help" },
@@ -25,3 +27,48 @@ return {
     ["//"] = { "y/<C-R>=escape(@\",'/')<cr><cr>", desc = "Search visually selected" },
   },
 }
+
+if telescope_ok then return maps end
+local previewers = require "telescope.previewers"
+local builtin = require "telescope.builtin"
+
+local delta_commits = previewers.new_termopen_previewer {
+  get_command = function(entry)
+    -- note we can't use pipes
+    -- this command is for git_commits and git_bcommits
+    return { "git", "-c", "core.pager=delta", "-c", "delta.side-by-side=false", "diff", entry.value .. "^!" }
+
+    -- this is for status
+    -- You can get the AM things in entry.status. So we are displaying file if entry.status == '??' or 'A '
+    -- just do an if and return a different command
+    -- return { 'git', '-c', 'core.pager=delta', '-c', 'delta.side-by-side=false', 'diff', entry.value }
+  end,
+}
+
+local delta_status = previewers.new_termopen_previewer {
+  get_command = function(entry)
+    -- this is for status
+    -- You can get the AM things in entry.status. So we are displaying file if entry.status == '??' or 'A '
+    -- just do an if and return a different command
+    return { "git", "-c", "core.pager=delta", "-c", "delta.side-by-side=false", "diff", entry.value }
+  end,
+}
+
+local git_commits = function(opts)
+  opts = opts or {}
+  opts.previewer = delta_commits
+
+  builtin.git_commits(opts)
+end
+
+local git_status = function(opts)
+  opts = opts or {}
+  opts.previewer = delta_status
+
+  builtin.git_status(opts)
+end
+
+maps.n["<leader>gc"] = { git_commits, desc = "Git commits" }
+maps.n["<leader>gt"] = { git_status, desc = "Git status" }
+
+return maps
