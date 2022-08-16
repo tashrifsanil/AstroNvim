@@ -220,6 +220,7 @@ local config = {
       },
       { "tpope/vim-abolish" },
       { "tpope/vim-surround" },
+      { "tpope/vim-repeat" },
       { "machakann/vim-highlightedyank" },
       { "michaeljsmith/vim-indent-object" },
       -- Sticky scroll similar to VSCode's implementation
