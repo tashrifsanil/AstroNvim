@@ -226,15 +226,20 @@ local config = {
 
     -- Set gui font only if neovide is being used as this causes erros in vimr
     if vim.g.neovide then
-      vim.opt.guifont = "JetBrainsMono Nerd Font Mono"
+      vim.opt.guifont = "JetBrainsMonoMedium Nerd Font Mono:h14:b"
       vim.g.neovide_refresh_rate = 120
-      vim.g.neovide_input_use_logo = 1
+      vim.g.neovide_cursor_trail_length = 0.01
       -- Allow copy pasting from system (mac specific)
       -- https://github.com/neovide/neovide/issues/1263
+      --
       vim.cmd 'map <D-v> "+p<CR>'
       vim.cmd "map! <D-v> <C-R>+"
       vim.cmd "tmap <D-v> <C-R>+"
       vim.cmd 'vmap <D-c> "+y<CR>'
+    end
+
+    if vim.g.glrnvim_gui then
+      vim.opt.guifont = "JetBrainsMonoMedium Nerd Font Mono:h14:b"
     end
 
     -- Remap @ so that macros can be played over selection more easily, without
