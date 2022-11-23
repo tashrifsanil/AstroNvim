@@ -29,6 +29,7 @@ return {
   { "jeetsukumaran/vim-indentwise" },
   { "mg979/vim-visual-multi" },
   { "michaeljsmith/vim-indent-object" },
+  ["akinsho/git-conflict.nvim"] = require "user.plugins.git-conflict",
   ["ggandor/leap.nvim"] = require "user.plugins.leap",
   ["ggandor/leap-spooky.nvim"] = require "user.plugins.leap-spooky",
   ["ggandor/flit.nvim"] = require "user.plugins.flit",
