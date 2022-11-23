@@ -20,11 +20,7 @@ return {
   --     require("lsp_signature").setup()
   --   end,
   -- },
-  {
-    "folke/tokyonight.nvim",
-    as = "tokyonight",
-    config = function() vim.cmd [[colorscheme tokyonight]] end,
-  },
+  ["pineapplegiant/spaceduck"] = require "user.plugins.spaceduck",
   { "tpope/vim-abolish" },
   { "tpope/vim-surround" },
   { "tpope/vim-unimpaired" },
