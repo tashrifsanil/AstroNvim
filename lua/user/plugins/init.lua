@@ -33,7 +33,9 @@ return {
   { "jeetsukumaran/vim-indentwise" },
   { "mg979/vim-visual-multi" },
   { "michaeljsmith/vim-indent-object" },
-  { "ggandor/lightspeed.nvim" },
+  ["ggandor/leap.nvim"] = require "user.plugins.leap",
+  ["ggandor/leap-spooky.nvim"] = require "user.plugins.leap-spooky",
+  ["ggandor/flit.nvim"] = require "user.plugins.flit",
   -- Sticky scroll similar to VSCode's implementation
   -- see: https://www.youtube.com/shorts/znue7UqdUf0
   {
