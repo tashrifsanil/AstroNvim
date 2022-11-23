@@ -1,4 +1,4 @@
-local telescope_ok, telescope = pcall(require, "telescope")
+local telescope_ok, _ = pcall(require, "telescope")
 
 local maps = {
   n = {
@@ -28,7 +28,9 @@ local maps = {
   },
 }
 
-if telescope_ok then return maps end
+-- If telescope is not installed skip overriding certain default telescope behaviour
+if not telescope_ok then return maps end
+
 local previewers = require "telescope.previewers"
 local builtin = require "telescope.builtin"
 
@@ -37,11 +39,6 @@ local delta_commits = previewers.new_termopen_previewer {
     -- note we can't use pipes
     -- this command is for git_commits and git_bcommits
     return { "git", "-c", "core.pager=delta", "-c", "delta.side-by-side=false", "diff", entry.value .. "^!" }
-
-    -- this is for status
-    -- You can get the AM things in entry.status. So we are displaying file if entry.status == '??' or 'A '
-    -- just do an if and return a different command
-    -- return { 'git', '-c', 'core.pager=delta', '-c', 'delta.side-by-side=false', 'diff', entry.value }
   end,
 }
 
